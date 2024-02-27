@@ -1,0 +1,10 @@
+<pre>{{ modules | json }}</pre>
+<div class="modules-container">
+  <div *ngFor="let module of modules">
+    <app-custom-material-card
+      [title]="module.name"
+      [description]="module.description"
+      [showButtons]="false"
+    ></app-custom-material-card>
+  </div>
+</div>

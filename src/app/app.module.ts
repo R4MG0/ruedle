@@ -9,12 +9,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './modules/pages/home/home.component';
 import { NavigationComponent } from './modules/components/navigation/navigation.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavigationComponent
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +23,7 @@ import { NavigationComponent } from './modules/components/navigation/navigation.
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
+    SharedModule,
     BrowserAnimationsModule
   ],
   providers: [],
