@@ -32,4 +32,20 @@ export class ModulesOverviewService {
     }
     return modules;
   }
+  getModuleById(moduleId: string):ClassModule {
+    return { id: 1,
+      name: "Module 1",
+      description: "This is a module",
+      members: [
+        {
+          name: "John Doe",
+          className: "Class 1"
+        },
+        {
+          name: "Jane Doe",
+          className: "Class 1"
+        }
+      ]
+    } as ClassModule;
+  }
 }
