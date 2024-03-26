@@ -13,4 +13,7 @@ export class OverviewComponent implements OnInit{
   ngOnInit(): void {
      this.modules = this.modulesOverviewService.getModules("userUuid");
   }
+  link (moduleId: number) :string {
+    return `class/module/${moduleId}` as string
+  }
 }

@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class ProfileOverviewComponent {
 
+  logout(){
+    localStorage.setItem('token', 'false');
+    window.location.reload();
+  }
 }

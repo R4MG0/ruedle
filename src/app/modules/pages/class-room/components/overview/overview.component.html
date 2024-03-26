@@ -3,6 +3,7 @@
   <div *ngFor="let module of modules">
     <app-custom-material-card
       [title]="module.name"
+      [link]="link(module.id)"
       [description]="module.description"
       [showButtons]="false"
     ></app-custom-material-card>

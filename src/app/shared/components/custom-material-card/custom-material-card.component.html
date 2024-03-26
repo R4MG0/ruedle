@@ -1,10 +1,10 @@
-<mat-card class="example-card">
+<mat-card class="example-card" (click)="goTo(link)">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{ title }}</mat-card-title>
     <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image [src]="imgSrc" />
+  <img *ngIf="showImg" mat-card-image [src]="imgSrc" />
   <mat-card-content>
     <p>
       {{ description }}

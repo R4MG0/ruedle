@@ -7,13 +7,15 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { OverviewComponent } from './components/overview/overview.component';
 import { SideNavigationComponent } from './components/side-navigation/side-navigation.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { OverviewModuleComponent } from './pages/overview-module/overview-module.component';
 
 
 @NgModule({
   declarations: [
     ModulesOverviewComponent,
     SideNavigationComponent,
-    OverviewComponent
+    OverviewComponent,
+    OverviewModuleComponent
   ],
   imports: [
     CommonModule,
