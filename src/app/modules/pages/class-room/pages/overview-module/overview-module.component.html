@@ -1,2 +1,33 @@
 <p>overview-module works!</p>
 <pre>{{ module | json }}</pre>
+<h1>{{ module.name }}</h1>
+
+<mat-tab-group>
+  <mat-tab label="Notes">
+    <h1>Notes</h1>
+    <app-note-page
+      [members]="module.members"
+      [moduleId]="module.id"
+    ></app-note-page>
+  </mat-tab>
+  <mat-tab label="Events">
+    <h1>Events</h1>
+    <app-event-table
+      [moduleId]="module.id"
+      [showTitle]="false"
+    ></app-event-table>
+  </mat-tab>
+  <mat-tab label="Members">
+    <h1>Members</h1>
+    <div class="container">
+      <div *ngFor="let member of module.members">
+        <app-custom-material-card
+          [title]="member.name"
+          [description]="member.className"
+          [showButtons]="false"
+          [showImg]="false"
+        ></app-custom-material-card>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

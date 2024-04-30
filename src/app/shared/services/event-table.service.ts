@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { EventData } from '../interfaces/event-data';
 import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventTableService {
 
-  constructor() { }
+  constructor(private readonly http: HttpClient) { }
 
 
   getEventTableData(){
@@ -26,5 +27,9 @@ export class EventTableService {
       {name: 'earstioen', subject: 'eiaorsnet1', date: '2024-03-01'},]
 
     return events;
+  }
+  getEventTableDataByModuleId(moduleId: number){
+    return of(this.getEventTableData());
+    // return this.http.get(`http://localhost:3000/events?moduleId=${moduleId}`);
   }
 }

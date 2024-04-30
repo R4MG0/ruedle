@@ -12,11 +12,14 @@ import { MatSidenavModule} from '@angular/material/sidenav'
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CustomMaterialCardComponent } from './components/custom-material-card/custom-material-card.component';
 import { MatCardModule } from '@angular/material/card';
+import { FancyListComponent } from './components/fancy-list/fancy-list.component';
+import { MatListModule } from '@angular/material/list';
+import { PostItComponent } from './components/post-it/post-it.component';
 
 
 @NgModule({
-  declarations: [EventTableComponent, CustomMaterialCardComponent],
-  exports: [EventTableComponent, CustomMaterialCardComponent],
+  declarations: [EventTableComponent, CustomMaterialCardComponent, FancyListComponent, PostItComponent],
+  exports: [EventTableComponent, CustomMaterialCardComponent, FancyListComponent, PostItComponent],
   imports: [
     CommonModule,
     MatPaginatorModule,
@@ -27,6 +30,7 @@ import { MatCardModule } from '@angular/material/card';
     MatSidenavModule,
     MatCardModule,
     MatToolbarModule,
+    MatListModule,
     ReactiveFormsModule
   ]
 })

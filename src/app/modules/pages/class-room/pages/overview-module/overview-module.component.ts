@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ClassModule } from 'src/app/shared/interfaces/class-module';
 import { ModulesOverviewService } from 'src/app/shared/services/modules-overview.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ModulesOverviewService } from 'src/app/shared/services/modules-overview
 })
 export class OverviewModuleComponent implements OnInit{
 
-  module = {};
+  module!:ClassModule;
 
   constructor(private moduleService: ModulesOverviewService, private route: ActivatedRoute) { }
 

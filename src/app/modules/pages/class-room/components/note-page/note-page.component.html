@@ -1,0 +1,17 @@
+<p>note-page works!</p>
+
+<div class="container">
+  <!-- <div class="members-container">
+    <app-fancy-list [members]="members"></app-fancy-list>
+  </div>
+  <div class="notepage">
+    <textarea name="Notes" id="note" cols="90" rows="100"></textarea>
+  </div> -->
+  <div class="postIt" *ngFor="let note of notes">
+    <app-post-it [note]="note"></app-post-it>
+  </div>
+</div>
+
+<button mat-raised-button color="primary" (click)="openDialog()">
+  Create Post-It
+</button>

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,9 +16,14 @@ displayedColumns: string[] = ['name', 'subject', 'date'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  @Input() moduleId!:number | null;
+  @Input() showTitle: boolean = true;
 
   constructor(private readonly eventTableService: EventTableService) {
     // Create 100 users
+    if(this.moduleId){
+      this.eventTableService.getEventTableDataByModuleId(this.moduleId);
+    }
     const events = this.eventTableService.getEventTableData()
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(events);
