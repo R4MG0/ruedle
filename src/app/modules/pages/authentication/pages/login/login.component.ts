@@ -22,6 +22,7 @@ export class LoginComponent {
     const user: RegistrationUser = this.loginForm.value as RegistrationUser;
     this.authenticationService.loginUser(user).subscribe((response) => {
       localStorage.setItem('token', response);
+      localStorage.setItem('username', user.username);
       this.router.navigate(['/home']);
     });
   }

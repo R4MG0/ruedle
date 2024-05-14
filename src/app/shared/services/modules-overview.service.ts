@@ -1,51 +1,29 @@
 import { Injectable } from '@angular/core';
 import { ClassModule } from '../interfaces/class-module';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModulesOverviewService {
 
-  constructor() { }
+  constructor(private readonly http: HttpClient, private readonly authService: AuthService) { }
 
-  getModules(userUuid: string):ClassModule[] {
-    let module :ClassModule= {
-      id: 1,
-      name: "Module 1",
-      description: "This is a module",
-      members: [
-        {
-          name: "John Doe",
-          className: "Class 1"
-        },
-        {
-          name: "Jane Doe",
-          className: "Class 1"
-        }
-      ]
+  getModules():Observable<ClassModule[]> {
+    const header = {
+        headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)
     }
-    let modules:ClassModule[] = []
-    for (let i = 0; i < 5; i++) {
-      module.id = i+1;
-      module.name = "Module " + (i+1);
-      modules.push(module);
-    }
-    return modules;
+    return this.http.post<ClassModule[]>(`http://localhost:8080/module/get`, header);
   }
-  getModuleById(moduleId: string):ClassModule {
-    return { id: 1,
-      name: "Module 1",
-      description: "This is a module",
-      members: [
-        {
-          name: "John Doe",
-          className: "Class 1"
-        },
-        {
-          name: "Jane Doe",
-          className: "Class 1"
-        }
-      ]
-    } as ClassModule;
+
+  getClasses():Observable<ClassModule[]> {
+    // const headers = { 'Authorization': 'Bearer my-token' }
+    return this.http.post<ClassModule[]>(`http://localhost:8080/school_class/get`,{});
+  }
+  getModuleById(moduleId: string):Observable<ClassModule> {
+    const body = {id: moduleId};
+    return this.http.post<ClassModule>(`http://localhost:8080/module/get`, body);
   }
 }

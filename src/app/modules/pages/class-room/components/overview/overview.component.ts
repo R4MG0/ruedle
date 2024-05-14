@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ClassModule } from 'src/app/shared/interfaces/class-module';
 import { ModulesOverviewService } from 'src/app/shared/services/modules-overview.service';
 
@@ -9,11 +9,25 @@ import { ModulesOverviewService } from 'src/app/shared/services/modules-overview
 })
 export class OverviewComponent implements OnInit{
   modules: ClassModule[] = []
+  @Input() isClass = false;
   constructor(private readonly modulesOverviewService: ModulesOverviewService) { }
   ngOnInit(): void {
-     this.modules = this.modulesOverviewService.getModules("userUuid");
-  }
+    if(this.isClass){
+      this.modulesOverviewService.getClasses().subscribe((classes) => {
+        console.log(classes);
+        this.modules = classes;
+      });
+    }
+      else{
+     this.modulesOverviewService.getModules().subscribe((modules) => {
+      this.modules = modules;
+     });
+     }
+    }
   link (moduleId: number) :string {
+    if(this.isClass){
+      return `class/${moduleId}` as string
+    }
     return `class/module/${moduleId}` as string
   }
 }

@@ -17,6 +17,8 @@ export class OverviewModuleComponent implements OnInit{
   ngOnInit(): void {
    const moduleId = this.route.snapshot.paramMap.get('moduleId');
    console.log('moduleId', moduleId)
-    this.module = this.moduleService.getModuleById(moduleId!);
+    this.moduleService.getModuleById(moduleId!).subscribe((module) => {
+      this.module = module;
+    });
   }
 }

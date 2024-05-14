@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotePageComponent } from './components/note-page/note-page.component';
+import { ClassOverviewComponent } from './pages/class-overview/class-overview.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { NotePageComponent } from './components/note-page/note-page.component';
     OverviewComponent,
     OverviewModuleComponent,
     CreatePostItDialogComponent,
-    NotePageComponent
+    NotePageComponent,
+    ClassOverviewComponent
   ],
   imports: [
     CommonModule,
@@ -39,6 +41,9 @@ import { NotePageComponent } from './components/note-page/note-page.component';
     MatInputModule,
     ClassRoomRoutingModule,
     MatTabsModule
+  ],
+  exports: [
+    NotePageComponent
   ]
 })
 export class ClassRoomModule { }
