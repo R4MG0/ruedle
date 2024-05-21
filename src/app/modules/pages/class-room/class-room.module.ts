@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotePageComponent } from './components/note-page/note-page.component';
 import { ClassOverviewComponent } from './pages/class-overview/class-overview.component';
+import { JoinClassDialogComponent } from './components/join-class-dialog/join-class-dialog.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ClassOverviewComponent } from './pages/class-overview/class-overview.co
     OverviewModuleComponent,
     CreatePostItDialogComponent,
     NotePageComponent,
-    ClassOverviewComponent
+    ClassOverviewComponent,
+    JoinClassDialogComponent
   ],
   imports: [
     CommonModule,

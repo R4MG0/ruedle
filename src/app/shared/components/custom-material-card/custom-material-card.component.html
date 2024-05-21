@@ -11,7 +11,7 @@
     </p>
   </mat-card-content>
   <mat-card-actions *ngIf="showButtons">
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-button (click)="edit()">Edit</button>
+    <button mat-button (click)="delete()">Delete</button>
   </mat-card-actions>
 </mat-card>

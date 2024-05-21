@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Join Class</h2>
+<mat-dialog-content>
+  <p>Enter a class by using its code</p>
+  <mat-form-field>
+    <mat-label>class code</mat-label>
+    <input matInput [(ngModel)]="data.classCode">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.classCode" cdkFocusInitial>Join</button>
+</mat-dialog-actions>

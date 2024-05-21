@@ -12,7 +12,7 @@ import { EventTableService } from '../../services/event-table.service';
 })
 export class EventTableComponent {
 displayedColumns: string[] = ['name', 'subject', 'date'];
-  dataSource: MatTableDataSource<EventData>;
+  dataSource!: MatTableDataSource<EventData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -22,11 +22,15 @@ displayedColumns: string[] = ['name', 'subject', 'date'];
   constructor(private readonly eventTableService: EventTableService) {
     // Create 100 users
     if(this.moduleId){
-      this.eventTableService.getEventTableDataByModuleId(this.moduleId);
+      this.eventTableService.getEventTableDataByModuleId(this.moduleId).subscribe((events) => {
+        console.log(events);
+      });
     }
-    const events = this.eventTableService.getEventTableData()
+    this.eventTableService.getEventTableData().subscribe((events) => {
+      console.log(events);
+      this.dataSource = new MatTableDataSource(events);
+    })
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(events);
   }
 
   ngAfterViewInit() {

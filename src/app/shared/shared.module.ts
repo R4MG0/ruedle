@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EventTableComponent } from './components/event-table/event-table.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
@@ -15,10 +15,13 @@ import { MatCardModule } from '@angular/material/card';
 import { FancyListComponent } from './components/fancy-list/fancy-list.component';
 import { MatListModule } from '@angular/material/list';
 import { PostItComponent } from './components/post-it/post-it.component';
+import { EditModuleDialogComponent } from './components/edit-module-dialog/edit-module-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
-  declarations: [EventTableComponent, CustomMaterialCardComponent, FancyListComponent, PostItComponent],
+  declarations: [EventTableComponent, CustomMaterialCardComponent, FancyListComponent, PostItComponent, EditModuleDialogComponent],
   exports: [EventTableComponent, CustomMaterialCardComponent, FancyListComponent, PostItComponent],
   imports: [
     CommonModule,
@@ -30,7 +33,10 @@ import { PostItComponent } from './components/post-it/post-it.component';
     MatSidenavModule,
     MatCardModule,
     MatToolbarModule,
+    MatDialogModule,
     MatListModule,
+    MatButtonModule,
+    FormsModule,
     ReactiveFormsModule
   ]
 })
