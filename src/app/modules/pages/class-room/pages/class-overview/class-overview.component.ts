@@ -9,7 +9,6 @@ import { ModulesOverviewService } from 'src/app/shared/services/modules-overview
   styleUrls: ['./class-overview.component.scss']
 })
 export class ClassOverviewComponent {
-  animal!: string;
   classCode!: string;
 
   constructor(public dialog: MatDialog, private readonly moduleService: ModulesOverviewService) {}
@@ -22,7 +21,10 @@ export class ClassOverviewComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.classCode = result;
-      this.moduleService.joinClass(this.classCode).subscribe();
+      this.moduleService.joinClass(this.classCode).subscribe( res => {
+        console.log(res);
+      });
+
     });
   }
 }

@@ -7,8 +7,8 @@ import { ClassOverviewComponent } from './pages/class-overview/class-overview.co
 
 const routes: Routes = [
   {path: '', component: ClassOverviewComponent, canActivate: [AuthGuard]},
-  {path: 'module', component: ModulesOverviewComponent, canActivate: [AuthGuard]},
-  {path: 'module/:moduleId', component: OverviewModuleComponent, canActivate: [AuthGuard]},
+  {path: ':classId/module', component: ModulesOverviewComponent, canActivate: [AuthGuard]},
+  {path: ':classId/module/:moduleId', component: OverviewModuleComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

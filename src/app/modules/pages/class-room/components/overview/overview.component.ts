@@ -26,7 +26,7 @@ export class OverviewComponent implements OnInit{
     }
   link (moduleId: number) :string {
     if(this.isClass){
-      return `class/${moduleId}` as string
+      return `class/${moduleId}/module` as string
     }
     return `class/module/${moduleId}` as string
   }
