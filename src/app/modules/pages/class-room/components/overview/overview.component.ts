@@ -8,8 +8,9 @@ import { ModulesOverviewService } from 'src/app/shared/services/modules-overview
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit{
-  modules: ClassModule[] = []
+  modules: any[] = []
   @Input() isClass = false;
+  // @Input() newClass: any;
   constructor(private readonly modulesOverviewService: ModulesOverviewService) { }
   ngOnInit(): void {
     if(this.isClass){
@@ -24,10 +25,11 @@ export class OverviewComponent implements OnInit{
      });
      }
     }
-  link (moduleId: number) :string {
+  link (moduleId: number, classId?: number) :string {
+    console.log('moduleId', moduleId)
     if(this.isClass){
       return `class/${moduleId}/module` as string
     }
-    return `class/module/${moduleId}` as string
+    return `class/${classId}/module/${moduleId}` as string
   }
 }

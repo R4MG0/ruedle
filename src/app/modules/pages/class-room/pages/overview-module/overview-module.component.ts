@@ -21,4 +21,7 @@ export class OverviewModuleComponent implements OnInit{
       this.module = module;
     });
   }
+  link (moduleId: number) :string {
+    return `class/module/${moduleId}` as string
+  }
 }

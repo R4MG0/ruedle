@@ -1,12 +1,26 @@
 <!-- <pre>{{ modules | json }}</pre> -->
 <div class="modules-container">
+  <!-- <div *ngIf="!newClass"> -->
   <div *ngFor="let module of modules">
+    <pre>{{ module | json }}</pre>
     <app-custom-material-card
-      [title]="module.name"
+      *ngIf="!isClass"
+      [name]="module.name"
+      [id]="module.id"
+      [link]="link(module.id, module.schoolClass.id)"
+      [description]="module.description"
+      [showButtons]="true"
+      [isClass]="isClass"
+    ></app-custom-material-card>
+    <app-custom-material-card
+      *ngIf="isClass"
+      [name]="module.name"
       [id]="module.id"
       [link]="link(module.id)"
       [description]="module.description"
       [showButtons]="true"
+      [isClass]="isClass"
     ></app-custom-material-card>
   </div>
+  <!-- </div> -->
 </div>

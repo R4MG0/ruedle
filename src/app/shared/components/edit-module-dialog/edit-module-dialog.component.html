@@ -2,15 +2,15 @@
 <mat-dialog-content>
   <p>What's your favorite animal?</p>
   <div class="container">
-  <mat-form-field>
-    <mat-label>Title</mat-label>
-    <input matInput [(ngModel)]="data.title">
-  </mat-form-field>
-   <mat-form-field>
-    <mat-label>description</mat-label>
-    <input matInput [(ngModel)]="data.description">
-  </mat-form-field>
-</div>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="data.name" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>description</mat-label>
+      <input matInput [(ngModel)]="data.description" />
+    </mat-form-field>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>

@@ -1,7 +1,7 @@
-<mat-card class="example-card" (click)="goTo(link)">
+<mat-card class="example-card">
   <mat-card-header>
     <!-- <div mat-card-avatar class="example-header-image"></div> -->
-    <mat-card-title>{{ title }}</mat-card-title>
+    <mat-card-title>{{ name }}</mat-card-title>
     <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
   </mat-card-header>
   <img *ngIf="showImg" mat-card-image [src]="imgSrc" />
@@ -13,5 +13,6 @@
   <mat-card-actions *ngIf="showButtons">
     <button mat-button (click)="edit()">Edit</button>
     <button mat-button (click)="delete()">Delete</button>
+    <button mat-button (click)="goTo(link)">Details</button>
   </mat-card-actions>
 </mat-card>

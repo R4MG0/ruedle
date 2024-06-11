@@ -1,3 +1,7 @@
-<button mat-raised-button (click)="openDialog()">Join Class</button>
-<pre *ngIf="classCode">{{classCode}}</pre>
+<button mat-raised-button (click)="openJoinClassDialog()">Join Class</button>
+<br />
+<button class="create" mat-raised-button (click)="openCreateClassDialog()">
+  Create Class
+</button>
+<pre *ngIf="classCode">{{ classCode }}</pre>
 <app-overview [isClass]="true"></app-overview>

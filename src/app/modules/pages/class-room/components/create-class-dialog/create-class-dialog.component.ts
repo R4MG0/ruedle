@@ -1,21 +1,19 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-
 export interface DialogData {
   name: string;
   description: string;
 }
 
-
 @Component({
-  selector: 'app-edit-module-dialog',
-  templateUrl: './edit-module-dialog.component.html',
-  styleUrls: ['./edit-module-dialog.component.scss']
+  selector: 'app-create-class-dialog',
+  templateUrl: './create-class-dialog.component.html',
+  styleUrls: ['./create-class-dialog.component.scss']
 })
-export class EditModuleDialogComponent {
-  constructor(
-    public dialogRef: MatDialogRef<EditModuleDialogComponent>,
+export class CreateClassDialogComponent {
+constructor(
+    public dialogRef: MatDialogRef<CreateClassDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
 

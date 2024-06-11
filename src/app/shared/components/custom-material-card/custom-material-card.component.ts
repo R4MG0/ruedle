@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModulesOverviewService } from '../../services/modules-overview.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -10,7 +10,7 @@ import { EditModuleDialogComponent } from '../edit-module-dialog/edit-module-dia
   styleUrls: ['./custom-material-card.component.scss']
 })
 export class CustomMaterialCardComponent implements OnInit {
-  @Input() title: string = '';
+  @Input() name: string = '';
   @Input() link: string = '';
   @Input() description: string = '';
   @Input() imgSrc: string = '';
@@ -18,6 +18,8 @@ export class CustomMaterialCardComponent implements OnInit {
   @Input() subtitle: string = '';
   @Input() showButtons!: boolean;
   @Input() id!: number;
+  @Input() isClass: boolean = false;
+
 
   deletion = false;
 
@@ -36,22 +38,32 @@ export class CustomMaterialCardComponent implements OnInit {
   delete(){
     this.deletion = true;
     console.log('delete', this.id)
+    if(this.isClass){
+      this.moduleService.deleteClass(this.id).subscribe((res) => {
+        console.log(res)
+      });
+    } else{
     this.moduleService.deleteModule(this.id).subscribe((res) => {
       console.log(res)
-    });
+    });}
     this.deletion = false;
   }
 
   edit(): void {
     const dialogRef = this.dialog.open(EditModuleDialogComponent, {
-      data: {title: this.title, description: this.description},
+      data: {name: this.name, description: this.description},
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      if(this.isClass) {
+        this.moduleService.editClass(this.id, result).subscribe((res) => {
+          console.log(res);
+        });
+      }else{
       this.moduleService.editModule(this.id, result).subscribe((res) => {
         console.log(res);
-      });
+      });}
       // this.animal = result;
       console.log(result)
     });

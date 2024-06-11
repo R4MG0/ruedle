@@ -22,11 +22,12 @@
     <div class="container">
       <div *ngFor="let member of module.members">
         <app-custom-material-card
-          [title]="member.name"
+          [name]="member.name"
           [description]="member.className"
           [showButtons]="false"
           [showImg]="false"
         ></app-custom-material-card>
+        <!-- [link]="link(member)" -->
       </div>
     </div>
   </mat-tab>

@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotePageComponent } from './components/note-page/note-page.component';
 import { ClassOverviewComponent } from './pages/class-overview/class-overview.component';
 import { JoinClassDialogComponent } from './components/join-class-dialog/join-class-dialog.component';
+import { CreateClassDialogComponent } from './components/create-class-dialog/create-class-dialog.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { JoinClassDialogComponent } from './components/join-class-dialog/join-cl
     CreatePostItDialogComponent,
     NotePageComponent,
     ClassOverviewComponent,
-    JoinClassDialogComponent
+    JoinClassDialogComponent,
+    CreateClassDialogComponent
   ],
   imports: [
     CommonModule,
