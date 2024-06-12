@@ -1,3 +1,8 @@
 export interface PostItData {
-  text: string; title: string; nameOfWriter: string; id: number; date: string;
+  id: number;
+  createdBy: string;
+  createdAt: string | Date;
+  title: string;
+  content: string;
+  schoolModule: any;
 }

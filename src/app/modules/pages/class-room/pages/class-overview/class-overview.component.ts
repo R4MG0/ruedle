@@ -37,7 +37,7 @@ export class ClassOverviewComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.classCode = result;
+      // this.classCode = result;
       this.moduleService.cerateClass(this.class).subscribe( res => {
         console.log(res);
       });

@@ -2,7 +2,7 @@
 <div class="modules-container">
   <!-- <div *ngIf="!newClass"> -->
   <div *ngFor="let module of modules">
-    <pre>{{ module | json }}</pre>
+    <!-- <pre>{{ module | json }}</pre> -->
     <app-custom-material-card
       *ngIf="!isClass"
       [name]="module.name"

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { PostItData } from '../../interfaces/post-it-data';
 
 @Component({
   selector: 'app-post-it',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./post-it.component.scss']
 })
 export class PostItComponent {
-  @Input() note: {text: string, title: string, nameOfWriter: string, id: number, date: string} = {text: '', title: '', nameOfWriter: '', id: 0, date: '12.11.2005'};
+  @Input() note!: PostItData;
 }
