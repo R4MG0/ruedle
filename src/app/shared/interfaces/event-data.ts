@@ -1,5 +1,11 @@
 export interface EventData {
-  name: string;
-  subject: string;
-  date: string;
+  id : number;
+  title: string;
+  description: string;
+  takesPlaceAt: string;
+  durationHours: number;
+  createdBy: any;
+  schoolModule: any;
+  manuallyAddedUsers: any;
+  manuallyAddedSchoolClasses: any;
 }

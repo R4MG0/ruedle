@@ -18,10 +18,11 @@ import { PostItComponent } from './components/post-it/post-it.component';
 import { EditModuleDialogComponent } from './components/edit-module-dialog/edit-module-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { CreateEventDialogComponent } from './components/create-event-dialog/create-event-dialog.component';
 
 
 @NgModule({
-  declarations: [EventTableComponent, CustomMaterialCardComponent, FancyListComponent, PostItComponent, EditModuleDialogComponent],
+  declarations: [EventTableComponent, CustomMaterialCardComponent, FancyListComponent, PostItComponent, EditModuleDialogComponent, CreateEventDialogComponent],
   exports: [EventTableComponent, CustomMaterialCardComponent, FancyListComponent, PostItComponent],
   imports: [
     CommonModule,

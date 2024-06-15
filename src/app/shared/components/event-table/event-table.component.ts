@@ -4,6 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { EventData } from '../../interfaces/event-data';
 import { EventTableService } from '../../services/event-table.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateEventData, CreateEventDialogComponent } from '../create-event-dialog/create-event-dialog.component';
 
 @Component({
   selector: 'app-event-table',
@@ -11,15 +13,15 @@ import { EventTableService } from '../../services/event-table.service';
   styleUrls: ['./event-table.component.scss']
 })
 export class EventTableComponent {
-displayedColumns: string[] = ['name', 'subject', 'date'];
+displayedColumns: string[] = ['title', 'description', 'takesPlaceAt', 'duration', 'createdBy', 'edit'];
   dataSource!: MatTableDataSource<EventData>;
-
+  newEvent!: CreateEventData;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @Input() moduleId!:number | null;
   @Input() showTitle: boolean = true;
 
-  constructor(private readonly eventTableService: EventTableService) {
+  constructor(private readonly eventTableService: EventTableService, private readonly dialog: MatDialog) {
     // Create 100 users
     if(this.moduleId){
       this.eventTableService.getEventTableDataByModuleId(this.moduleId).subscribe((events) => {
@@ -46,7 +48,20 @@ displayedColumns: string[] = ['name', 'subject', 'date'];
       this.dataSource.paginator.firstPage();
     }
   }
+  createEvent(){
+    console.log('create event');
+    const dialogRef = this.dialog.open(CreateEventDialogComponent, {
+      data: {...this.newEvent},
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('result', result)
+    })
+  }
+  editEvent(event: EventData){
+    console.log('edit event', event);
+  }
 }
+
 
 /** Builds and returns a new User. */
 // function get(id: number): EventData {
