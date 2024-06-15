@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Create event</h2>
+<mat-dialog-content>
+  <p>Create an event by the following input fields</p>
+  <mat-form-field>
+    <mat-label>Title </mat-label>
+    <input matInput required [(ngModel)]="data.title" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput required [(ngModel)]="data.description" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Where? </mat-label>
+    <input matInput required [(ngModel)]="data.takesPlaceAt" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Duration (in hours) </mat-label>
+    <input matInput required [(ngModel)]="data.durationHours" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="data"
+    [hidden]="
+      !data.description &&
+      !data.durationHours &&
+      !data.schoolModuleId &&
+      !data.takesPlaceAt &&
+      !data.title
+    "
+  >
+    Create
+  </button>
+</mat-dialog-actions>

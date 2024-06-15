@@ -3,6 +3,12 @@
   width: 50em;
 }
 
-.container {
-  margin-left: 10em;
+// .container {
+//   margin-left: 10em;
+// }
+.table-header{
+  display: flex;
+  button {
+    margin-left: 1em;
+  }
 }
