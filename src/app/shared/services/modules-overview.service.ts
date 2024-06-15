@@ -11,8 +11,8 @@ export class ModulesOverviewService {
 
   constructor(private readonly http: HttpClient, private readonly authService: AuthService) { }
 
-  getModules():Observable<ClassModule[]> {
-    return this.http.post<ClassModule[]>(`http://localhost:8080/module/get`, {}, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
+  getModules(schoolClassId: number):Observable<ClassModule[]> {
+    return this.http.post<ClassModule[]>(`http://localhost:8080/module/get`, {schoolClass: {id: schoolClassId}}, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
   }
 
   getClasses():Observable<ClassModule[]> {

@@ -20,7 +20,7 @@ export class OverviewComponent implements OnInit{
       });
     }
       else{
-     this.modulesOverviewService.getModules().subscribe((modules) => {
+     this.modulesOverviewService.getModules(3).subscribe((modules) => {
       this.modules = modules;
      });
      }
