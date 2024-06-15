@@ -55,6 +55,10 @@ displayedColumns: string[] = ['title', 'description', 'takesPlaceAt', 'duration'
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('result', result)
+      const event: CreateEventData = {...result, schoolModuleId: this.moduleId};
+      this.eventTableService.createEventForModule(event).subscribe((event) => {
+        console.log('event', event);
+      });
     })
   }
   editEvent(event: EventData){

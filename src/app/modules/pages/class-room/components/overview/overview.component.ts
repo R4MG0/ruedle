@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ClassModule } from 'src/app/shared/interfaces/class-module';
 import { ModulesOverviewService } from 'src/app/shared/services/modules-overview.service';
 
@@ -11,8 +12,9 @@ export class OverviewComponent implements OnInit{
   modules: any[] = []
   @Input() isClass = false;
   // @Input() newClass: any;
-  constructor(private readonly modulesOverviewService: ModulesOverviewService) { }
+  constructor(private readonly modulesOverviewService: ModulesOverviewService, private readonly route: ActivatedRoute) { }
   ngOnInit(): void {
+    const classId = this.route.snapshot.paramMap.get('classId');
     if(this.isClass){
       this.modulesOverviewService.getClasses().subscribe((classes) => {
         console.log(classes);
@@ -20,7 +22,7 @@ export class OverviewComponent implements OnInit{
       });
     }
       else{
-     this.modulesOverviewService.getModules(3).subscribe((modules) => {
+     this.modulesOverviewService.getModules(8).subscribe((modules) => {
       this.modules = modules;
      });
      }
