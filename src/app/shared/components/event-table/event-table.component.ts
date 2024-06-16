@@ -6,6 +6,7 @@ import { EventData } from '../../interfaces/event-data';
 import { EventTableService } from '../../services/event-table.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateEventData, CreateEventDialogComponent } from '../create-event-dialog/create-event-dialog.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event-table',
@@ -18,20 +19,18 @@ displayedColumns: string[] = ['title', 'description', 'takesPlaceAt', 'duration'
   newEvent!: CreateEventData;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @Input() moduleId!:number | null;
+  @Input() moduleId!:number;
   @Input() showTitle: boolean = true;
 
-  constructor(private readonly eventTableService: EventTableService, private readonly dialog: MatDialog) {
+  constructor(private readonly eventTableService: EventTableService, private readonly dialog: MatDialog, readonly route: ActivatedRoute) {
     // Create 100 users
+    if(this.moduleId === null || this.moduleId === undefined){ this.moduleId = Number(this.route.snapshot.paramMap.get('moduleId'))}
     if(this.moduleId){
       this.eventTableService.getEventTableDataByModuleId(this.moduleId).subscribe((events) => {
+        this.dataSource = new MatTableDataSource(events);
         console.log(events);
       });
     }
-    this.eventTableService.getEventTableData().subscribe((events) => {
-      console.log(events);
-      this.dataSource = new MatTableDataSource(events);
-    })
     // Assign the data to the data source for the table to render
   }
 
@@ -63,6 +62,15 @@ displayedColumns: string[] = ['title', 'description', 'takesPlaceAt', 'duration'
   }
   editEvent(event: EventData){
     console.log('edit event', event);
+    const dialogRef = this.dialog.open(CreateEventDialogComponent, {
+      data: {...event},
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('result', result)
+      this.eventTableService.updateEventForModule(result).subscribe((event:any) => {
+        console.log('event', event);
+      });
+    })
   }
 }
 

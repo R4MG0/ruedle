@@ -17,11 +17,14 @@ export class EventTableService {
     return this.http.post<EventData[]>(`http://localhost:8080/event/get`, {}, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
   }
   getEventTableDataByModuleId(moduleId: number): Observable<EventData[]>{
-    return this.http.post<EventData[]>(`http://localhost:8080/event/get`, {moduleId: moduleId}, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
+    return this.http.post<EventData[]>(`http://localhost:8080/event/get`, {schoolModule: {id:moduleId}}, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
     // return of(this.getEventTableData());
     // return this.http.get(`http://localhost:3000/events?moduleId=${moduleId}`);
   }
   createEventForModule(event: CreateEventData): Observable<EventData>{
     return this.http.post<EventData>(`http://localhost:8080/event`, event, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
+  }
+  updateEventForModule(event: EventData): Observable<EventData>{
+    return this.http.put<EventData>(`http://localhost:8080/event?id=${event.id}`, event, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
   }
 }
