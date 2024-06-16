@@ -12,13 +12,14 @@
   </mat-form-field>
   <br />
   <mat-form-field>
-    <mat-label>Where? </mat-label>
+    <mat-label>When? </mat-label>
     <input matInput required [(ngModel)]="data.takesPlaceAt" />
+    <mat-hint>Format: dd.MM.yyyy hh:mm</mat-hint>
   </mat-form-field>
   <br />
   <mat-form-field>
     <mat-label>Duration (in hours) </mat-label>
-    <input matInput required [(ngModel)]="data.durationHours" />
+    <input matInput type="number" required [(ngModel)]="data.durationHours" />
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>

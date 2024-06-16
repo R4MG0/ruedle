@@ -22,6 +22,6 @@ export class EventTableService {
     // return this.http.get(`http://localhost:3000/events?moduleId=${moduleId}`);
   }
   createEventForModule(event: CreateEventData): Observable<EventData>{
-    return this.http.post<EventData>(`http://localhost:8080/event`, {event}, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
+    return this.http.post<EventData>(`http://localhost:8080/event`, event, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
   }
 }
