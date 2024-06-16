@@ -1,4 +1,7 @@
-<h1>Profile</h1>
-<button (click)="logout()">Log-Out</button>
-<button (click)="logout()">Delete User</button>
+<h1>Profile {{username}}</h1>
+<div class="buttonContainer">
+<button mat-raised-button (click)="logout()">Log-Out</button>
+<button mat-raised-button (click)="logout()">Delete User</button>
+</div>
+<app-grade-table></app-grade-table>
 <app-note-page></app-note-page>

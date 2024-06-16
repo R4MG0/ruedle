@@ -11,4 +11,7 @@ export class ProfileOverviewComponent {
     localStorage.setItem('token', 'false');
     window.location.reload();
   }
+  get username(){
+    return localStorage.getItem('username');
+  }
 }
