@@ -1,4 +1,6 @@
-<!-- <pre>{{ modules | json }}</pre> -->
+<div class="joinCode" *ngIf="!isClass">
+  The Joincode for this class is <b>{{joinCode}}</b>
+</div>
 <div class="modules-container">
   <!-- <div *ngIf="!newClass"> -->
   <div *ngFor="let module of modules">

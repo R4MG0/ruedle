@@ -51,4 +51,8 @@ export class ModulesOverviewService {
   createModule(data: any):Observable<any> {
     return this.http.post<any>(`http://localhost:8080/module`, data, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
   }
+
+  getClassJoinCode(classId: number) {
+    return this.http.get(`http://localhost:8080/school_class/code?id=${classId}`, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`), responseType: 'text'});
+  }
 }

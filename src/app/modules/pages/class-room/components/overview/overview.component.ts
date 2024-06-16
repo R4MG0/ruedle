@@ -10,6 +10,7 @@ import { ModulesOverviewService } from 'src/app/shared/services/modules-overview
 })
 export class OverviewComponent implements OnInit{
   modules: any[] = []
+  joinCode!: string;
   @Input() isClass = false;
   // @Input() newClass: any;
   constructor(private readonly modulesOverviewService: ModulesOverviewService, private readonly route: ActivatedRoute) { }
@@ -22,8 +23,12 @@ export class OverviewComponent implements OnInit{
       });
     }
       else{
-     this.modulesOverviewService.getModules(8).subscribe((modules) => {
+     this.modulesOverviewService.getModules(Number(classId)).subscribe((modules) => {
       this.modules = modules;
+     });
+     this.modulesOverviewService.getClassJoinCode(Number(classId)).subscribe((code) => {
+      this.joinCode = code;
+      console.log(code);
      });
      }
     }
