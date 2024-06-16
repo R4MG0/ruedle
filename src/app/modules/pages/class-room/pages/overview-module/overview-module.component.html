@@ -3,8 +3,8 @@
 <div class="fetteContainer">
   <h1>{{ module.name }}</h1>
 
-  <mat-tab-group>
-    <mat-tab label="Notes">
+  <mat-tab-group [selectedIndex]="selectedTabIndex" (selectedTabChange)="toggleActiveTab($event)">
+    <mat-tab label="Notes" >
       <h1>Notes</h1>
       <!-- <pre>{{module | json}}</pre> -->
       <app-note-page
@@ -19,7 +19,7 @@
         [showTitle]="false"
       ></app-event-table>
     </mat-tab>
-    <mat-tab label="Members">
+    <mat-tab label="Members" disabled>
       <h1>Members</h1>
       <div class="container">
         <div *ngFor="let member of module.members">

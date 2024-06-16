@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,10 +13,11 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './event-table.component.html',
   styleUrls: ['./event-table.component.scss']
 })
-export class EventTableComponent {
+export class EventTableComponent implements AfterViewInit {
 displayedColumns: string[] = ['title', 'description', 'takesPlaceAt', 'duration', 'createdBy', 'edit'];
   dataSource!: MatTableDataSource<EventData>;
   newEvent!: CreateEventData;
+  
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @Input() moduleId!:number;

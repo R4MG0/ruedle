@@ -9,12 +9,17 @@ import { ModulesOverviewService } from 'src/app/shared/services/modules-overview
   styleUrls: ['./overview-module.component.scss']
 })
 export class OverviewModuleComponent implements OnInit{
-
+selectedTabIndex!: number;
   module!:ClassModule;
 
   constructor(private moduleService: ModulesOverviewService, private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
+    if(localStorage.getItem('tabIndex')) {
+      this.selectedTabIndex = Number(localStorage.getItem('tabIndex'));
+    }else{
+      this.selectedTabIndex = 0;
+  }
    const moduleId = this.route.snapshot.paramMap.get('moduleId');
    console.log('moduleId', moduleId)
     this.moduleService.getModuleById(moduleId!).subscribe((module: any) => {
@@ -23,5 +28,10 @@ export class OverviewModuleComponent implements OnInit{
   }
   link (moduleId: number) :string {
     return `class/module/${moduleId}` as string
+  }
+  toggleActiveTab(event: any){
+    this.selectedTabIndex = event.index;
+    localStorage.setItem('tabIndex', event.index);
+    // localStorage.setItem('tabIndex', event.index);
   }
 }
