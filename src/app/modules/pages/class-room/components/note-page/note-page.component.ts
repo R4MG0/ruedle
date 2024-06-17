@@ -31,7 +31,7 @@ export class NotePageComponent implements OnInit{
       content: '',
       schoolModuleId: this.moduleId
     }
-    const dialogRef = this.dialog.open(CreatePostItDialogComponent, {data: {...emptyPostIt}, width: '500px', height: '300px'});
+    const dialogRef = this.dialog.open(CreatePostItDialogComponent, {data: {...emptyPostIt}});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

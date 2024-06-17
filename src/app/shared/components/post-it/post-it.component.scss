@@ -7,3 +7,17 @@
   position: relative;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+button {
+  width: 3em;
+  height: auto;
+}
+
+mat-chip {
+  background-color: transparent;
+}
+mat-card-actions{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}

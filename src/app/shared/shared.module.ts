@@ -19,6 +19,8 @@ import { EditModuleDialogComponent } from './components/edit-module-dialog/edit-
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { CreateEventDialogComponent } from './components/create-event-dialog/create-event-dialog.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { CreateEventDialogComponent } from './components/create-event-dialog/cre
     MatDialogModule,
     MatListModule,
     MatButtonModule,
+    MatIconModule,
+    MatChipsModule,
     FormsModule,
     ReactiveFormsModule
   ]

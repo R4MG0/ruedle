@@ -1,9 +1,15 @@
 <mat-card class="post-it">
   <mat-card-header>
-    <mat-card-title>{{ note.title }}</mat-card-title>
+    <mat-card-title>{{ note.title }}</mat-card-title>         
+      <!-- <button mat-mini-fab aria-label="Example icon button with a home icon"> -->
+          <!-- <mat-icon>pen</mat-icon> -->
     <mat-card-subtitle>{{ note.createdBy.username }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <p>{{ note.content }}</p>
   </mat-card-content>
+  <mat-card-actions>
+    <a mat-icon-button (click)="editNote(note)"> <mat-icon>edit</mat-icon> </a>
+    <a mat-icon-button (click)="deleteNote()"> <mat-icon>delete</mat-icon> </a>
+  </mat-card-actions> 
 </mat-card>

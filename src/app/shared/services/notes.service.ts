@@ -20,6 +20,13 @@ export class NotesService {
   cerateNote(data: CreatePostItData):Observable<PostItData[]> {
     return this.http.post<PostItData[]>(`http://localhost:8080/note`, data, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
   }
+updateNote(data: any):Observable<PostItData[]> {
+  console.log('data: ', data);
+    return this.http.put<PostItData[]>(`http://localhost:8080/note?id=${data.id}`, data, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
+  }
 
+  deleteNote(id: number):Observable<any> {
+    return this.http.delete(`http://localhost:8080/note?id=${id}`, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
+  }
 
 }
