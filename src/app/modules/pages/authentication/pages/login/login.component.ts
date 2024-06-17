@@ -10,9 +10,10 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  register = false;
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
-    // email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [ Validators.email]),
     password: new FormControl('', [Validators.required]),
   });
   constructor(private readonly authenticationService: AuthenticationService, private router : Router) { }
@@ -20,10 +21,20 @@ export class LoginComponent {
   login() {
     console.log('aroisetnairsnt')
     const user: RegistrationUser = this.loginForm.value as RegistrationUser;
+    if(this.register) {
+      this.authenticationService.registerUser(user).subscribe((response) => {
+        alert('User registered sucessfully! Please Login to continue.');
+        this.register = false;
+      });
+      return;      
+    }
     this.authenticationService.loginUser(user).subscribe((response) => {
       localStorage.setItem('token', response);
       localStorage.setItem('username', user.username);
       this.router.navigate(['/home']);
     });
+  }
+  toggleRegister(){
+    this.register = !this.register;
   }
 }

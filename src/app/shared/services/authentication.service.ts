@@ -11,7 +11,7 @@ export class AuthenticationService {
   constructor( private readonly http: HttpClient) { }
 
   registerUser(user: RegistrationUser) {
-    return this.http.post('http://localhost:5432/user/sign-up', user);
+    return this.http.post('http://localhost:8080/user/sign-up', user);
   }
   loginUser(user: RegistrationUser) {
     const httpOptions = {

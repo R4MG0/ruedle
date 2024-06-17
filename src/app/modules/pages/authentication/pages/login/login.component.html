@@ -17,7 +17,7 @@
 <div class="login-container">
   <mat-card class="login-card">
     <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
+      <mat-card-title>{{register ? 'Register' : 'Login'}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <form [formGroup]="loginForm" class="login-form">
@@ -28,6 +28,15 @@
             >Username is required</mat-error
           >
         </mat-form-field>
+
+         <mat-form-field class="full-width" *ngIf="register">
+          <mat-hint>E-Mail</mat-hint>
+          <input matInput formControlName="email" />
+          <mat-error *ngIf="loginForm.controls.email.invalid"
+            >Email is required</mat-error
+          >
+        </mat-form-field>       
+
         <mat-form-field class="full-width">
           <mat-hint>Password</mat-hint>
           <input matInput type="password" formControlName="password" />
@@ -35,13 +44,14 @@
             >Username is required</mat-error
           >
         </mat-form-field>
+        <p>Click <a (click)="toggleRegister()">here</a> if you want to {{register ? 'login' : 'register'}} </p>
         <button
           mat-raised-button
           color="primary"
           class="login-button"
           (click)="login()"
         >
-          Login
+          {{register ? 'Register' : 'Login'}}
         </button>
       </form>
     </mat-card-content>
