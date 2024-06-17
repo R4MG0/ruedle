@@ -27,4 +27,8 @@ export class EventTableService {
   updateEventForModule(event: EventData): Observable<EventData>{
     return this.http.put<EventData>(`http://localhost:8080/event?id=${event.id}`, event, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
   }
+
+  deleteEvent(id: number): Observable<any>{
+    return this.http.delete(`http://localhost:8080/event?id=${id}`, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
+  }
 }

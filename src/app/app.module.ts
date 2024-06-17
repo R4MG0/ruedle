@@ -12,6 +12,7 @@ import { NavigationComponent } from './modules/components/navigation/navigation.
 import { SharedModule } from './shared/shared.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth.interceptor';
+import { ProfileModule } from './modules/pages/profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AuthInterceptor } from './core/auth.interceptor';
     MatButtonModule,
     MatToolbarModule,
     SharedModule,
+    ProfileModule,
     BrowserAnimationsModule
   ],
   providers: [

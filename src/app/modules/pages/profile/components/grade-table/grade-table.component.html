@@ -46,7 +46,8 @@
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit</th>
         <td mat-cell *matCellDef="let row">
-          <button mat-raised-button (click)="editEvent(row)">Edit</button>
+          <a mat-icon-button (click)="editEvent(row)"><mat-icon>edit</mat-icon></a>
+          <a mat-icon-button (click)="deleteEvent(row)"><mat-icon>delete</mat-icon></a>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

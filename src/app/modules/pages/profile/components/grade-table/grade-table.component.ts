@@ -16,7 +16,7 @@ import { CreateGrade } from 'src/app/shared/interfaces/create-grade';
 export class GradeTableComponent implements OnInit, AfterViewInit{
   displayedColumns: string[] = ['grade', 'weight', 'testDate', 'forModule', 'semester', 'edit'];
   dataSource!: MatTableDataSource<Grade>;
-  newGrade!: CreateGrade;
+  newGrade: CreateGrade = {grade:1, weight: 0, testDate: '', forModuleId: 0, semester: 0};
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private readonly gradeService: GradeService, private readonly dialog: MatDialog) { }
@@ -45,7 +45,8 @@ export class GradeTableComponent implements OnInit, AfterViewInit{
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('result', result)
-      const event: CreateGrade = {...result};
+      this.formatDate(result.testDate);
+      const event: CreateGrade = {grade: result.grade, weight: result.weight, testDate: this.formatDate(result.testDate), forModuleId: result.forModuleId, semester: result.semester};
       this.gradeService.createGradeForModule(event).subscribe((event) => {
         console.log('event', event);
         this.ngOnInit();
@@ -63,5 +64,28 @@ export class GradeTableComponent implements OnInit, AfterViewInit{
         console.log('event', event);
       });
     })
+  }
+  deleteEvent(event: Grade){
+    console.log('delete event', event);
+    this.gradeService.deleteGrade(event.id).subscribe((event) => {
+      console.log('event', event);
+      this.ngOnInit();
+    });
+  }
+  formatDate(date: Date): string{
+    // Extract day, month, and year from the date
+    const day = date.getDate();
+    const month = date.getMonth() + 1; // Months are zero-based
+    const year = date.getFullYear();
+
+    // Pad day and month with leading zeros if necessary
+    const formattedDay = day < 10 ? `0${day}` : `${day}`;
+    const formattedMonth = month < 10 ? `0${month}` : `${month}`;
+
+    // Construct the formatted date string
+    const formattedDate = `${formattedDay}.${formattedMonth}.${year} 00:00`;
+
+    console.log('formattedDate', formattedDate);
+    return formattedDate;
   }
 }

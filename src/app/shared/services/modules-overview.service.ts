@@ -14,6 +14,9 @@ export class ModulesOverviewService {
   getModules(schoolClassId: number):Observable<ClassModule[]> {
     return this.http.post<ClassModule[]>(`http://localhost:8080/module/get`, {schoolClass: {id: schoolClassId}}, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
   }
+  getAllModules():Observable<ClassModule[]> {
+    return this.http.post<ClassModule[]>(`http://localhost:8080/module/get`, null, {headers: new HttpHeaders().set('Authorization',  `${this.authService.getToken()}`)});
+  }
 
   getClasses():Observable<ClassModule[]> {
     // const headers = { 'Authorization': 'Bearer my-token' }

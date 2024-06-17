@@ -1,4 +1,5 @@
 <h2 mat-dialog-title>Create event</h2>
+<!-- <pre>{{modules | json}}</pre> -->
 <mat-dialog-content>
   <p>Add a grade by the following input fields</p>
   <mat-form-field>
@@ -11,11 +12,28 @@
     <input matInput type="number" [(ngModel)]="data.weight" />
   </mat-form-field>
   <br />
-  <mat-form-field>
+ <mat-form-field *ngIf="modules">
+  <mat-label>Module</mat-label>
+  <mat-select [(ngModel)]="data.forModuleId">
+    <mat-option *ngFor="let module of modules" [value]="module.id">
+      {{ module.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+ 
+  <br />
+  <!-- <mat-form-field>
     <mat-label>When? </mat-label>
     <input matInput required [(ngModel)]="data.testDate" />
     <mat-hint>Format: dd.MM.yyyy</mat-hint>
-  </mat-form-field>
+  </mat-form-field> -->
+  <mat-form-field>
+  <mat-label>Choose a date</mat-label>
+  <input matInput [matDatepicker]="picker" [(ngModel)]="data.testDate">
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
   <br />
   <mat-form-field>
     <mat-label>Semester </mat-label>

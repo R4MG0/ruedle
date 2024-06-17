@@ -75,6 +75,12 @@ displayedColumns: string[] = ['title', 'description', 'takesPlaceAt', 'duration'
       });
     })
   }
+  deleteEvent(event: EventData){
+    this.eventTableService.deleteEvent(event.id).subscribe((event:any) => {
+      console.log('event', event);
+      this.ngOnInit();
+    })
+  }
 }
 
 

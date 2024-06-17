@@ -13,13 +13,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CreateGradeComponent } from './components/create-grade/create-grade.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
   declarations: [
     ProfileOverviewComponent,
     GradeTableComponent,
-    CreateGradeComponent
+    CreateGradeComponent,
   ],
   imports: [
     CommonModule,
@@ -32,7 +36,15 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatOptionModule,
+    MatIconModule,
+    MatSelectModule
+  ],
+  exports: [
+    GradeTableComponent
   ]
 })
 export class ProfileModule { }
