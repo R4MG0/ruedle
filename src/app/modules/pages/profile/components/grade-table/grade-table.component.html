@@ -1,1 +1,66 @@
-<p>grade-table works!</p>
+<div class="container">
+  <h1>Grades:</h1>
+
+  <div class="table-header">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. Mia"
+        #input
+      />
+    </mat-form-field>
+    <button mat-raised-button (click)="createEvent()">Add Grade</button>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <!-- Progress Column -->
+      <ng-container matColumnDef="grade">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Grade</th>
+        <td mat-cell *matCellDef="let row">{{ row.grade }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>weight</th>
+        <td mat-cell *matCellDef="let row">{{ row.weight }}</td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="testDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Test date</th>
+        <td mat-cell *matCellDef="let row">{{ row.testDate }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="forModule">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Modul</th>
+        <td mat-cell *matCellDef="let row">{{ row.forModule }}h</td>
+      </ng-container>
+
+      <ng-container matColumnDef="semester">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Semester</th>
+        <td mat-cell *matCellDef="let row">{{ row.semester }}</td>
+      </ng-container>
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-raised-button (click)="editEvent(row)">Edit</button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data found</td>
+      </tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page of users"
+    ></mat-paginator>
+  </div>
+</div>

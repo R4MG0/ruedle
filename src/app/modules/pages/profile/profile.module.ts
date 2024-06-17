@@ -6,18 +6,33 @@ import { ProfileOverviewComponent } from './pages/profile-overview/profile-overv
 import { ClassRoomModule } from '../class-room/class-room.module';
 import { MatButtonModule } from '@angular/material/button';
 import { GradeTableComponent } from './components/grade-table/grade-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { CreateGradeComponent } from './components/create-grade/create-grade.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
   declarations: [
     ProfileOverviewComponent,
-    GradeTableComponent
+    GradeTableComponent,
+    CreateGradeComponent
   ],
   imports: [
     CommonModule,
     ProfileRoutingModule,
     ClassRoomModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatPaginatorModule
   ]
 })
 export class ProfileModule { }
