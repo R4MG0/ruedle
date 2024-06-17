@@ -39,6 +39,7 @@ export class NotePageComponent implements OnInit{
       this.newPostIt = result;
       this.notesService.cerateNote(this.newPostIt).subscribe((res: PostItData[]) => {
         this.notes = res;
+        this.ngOnInit();
       });
       //TODO send new post it to backend
     });

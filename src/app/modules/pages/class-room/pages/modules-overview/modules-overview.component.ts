@@ -28,6 +28,7 @@ export class ModulesOverviewComponent implements OnInit {
       console.log('The dialog was closed');
       this.moduleService.createModule(this.module).subscribe( res => {
         console.log(res);
+        window.location.reload();
       });
 
     });

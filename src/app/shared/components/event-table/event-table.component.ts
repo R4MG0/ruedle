@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './event-table.component.html',
   styleUrls: ['./event-table.component.scss']
 })
-export class EventTableComponent implements AfterViewInit {
+export class EventTableComponent implements OnInit, AfterViewInit {
 displayedColumns: string[] = ['title', 'description', 'takesPlaceAt', 'duration', 'createdBy', 'edit'];
   dataSource!: MatTableDataSource<EventData>;
   newEvent!: CreateEventData;
@@ -24,15 +24,15 @@ displayedColumns: string[] = ['title', 'description', 'takesPlaceAt', 'duration'
   @Input() showTitle: boolean = true;
 
   constructor(private readonly eventTableService: EventTableService, private readonly dialog: MatDialog, readonly route: ActivatedRoute) {
-    // Create 100 users
-    if(this.moduleId === null || this.moduleId === undefined){ this.moduleId = Number(this.route.snapshot.paramMap.get('moduleId'))}
+  }
+  ngOnInit(): void {
+     if(this.moduleId === null || this.moduleId === undefined){ this.moduleId = Number(this.route.snapshot.paramMap.get('moduleId'))}
     if(this.moduleId){
       this.eventTableService.getEventTableDataByModuleId(this.moduleId).subscribe((events) => {
         this.dataSource = new MatTableDataSource(events);
         console.log(events);
       });
-    }
-    // Assign the data to the data source for the table to render
+    } 
   }
 
   ngAfterViewInit() {
@@ -58,6 +58,7 @@ displayedColumns: string[] = ['title', 'description', 'takesPlaceAt', 'duration'
       const event: CreateEventData = {...result, schoolModuleId: this.moduleId};
       this.eventTableService.createEventForModule(event).subscribe((event) => {
         console.log('event', event);
+        this.ngOnInit();
       });
     })
   }
@@ -70,6 +71,7 @@ displayedColumns: string[] = ['title', 'description', 'takesPlaceAt', 'duration'
       console.log('result', result)
       this.eventTableService.updateEventForModule(result).subscribe((event:any) => {
         console.log('event', event);
+        this.ngOnInit();
       });
     })
   }

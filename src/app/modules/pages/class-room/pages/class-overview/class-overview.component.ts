@@ -26,6 +26,7 @@ export class ClassOverviewComponent {
       this.classCode = result;
       this.moduleService.joinClass(this.classCode).subscribe( res => {
         console.log(res);
+        window.location.reload();
       });
 
     });
@@ -40,6 +41,7 @@ export class ClassOverviewComponent {
       // this.classCode = result;
       this.moduleService.cerateClass(this.class).subscribe( res => {
         console.log(res);
+        window.location.reload();
       });
 
     });

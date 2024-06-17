@@ -48,19 +48,20 @@ export class GradeTableComponent implements OnInit, AfterViewInit{
       const event: CreateGrade = {...result};
       this.gradeService.createGradeForModule(event).subscribe((event) => {
         console.log('event', event);
+        this.ngOnInit();
       });
     })
   }
   editEvent(event: Grade){
     console.log('edit event', event);
-    // const dialogRef = this.dialog.open(CreateEventDialogComponent, {
-    //   data: {...event},
-    // });
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('result', result)
-    //   this.eventTableService.updateEventForModule(result).subscribe((event:any) => {
-    //     console.log('event', event);
-    //   });
-    // })
+    const dialogRef = this.dialog.open(CreateGradeComponent, {
+      data: {...event},
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('result', result)
+      this.gradeService.updateGradeForModule(result).subscribe((event:any) => {
+        console.log('event', event);
+      });
+    })
   }
 }

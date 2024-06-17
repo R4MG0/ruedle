@@ -41,10 +41,12 @@ export class CustomMaterialCardComponent implements OnInit {
     if(this.isClass){
       this.moduleService.deleteClass(this.id).subscribe((res) => {
         console.log(res)
+        window.location.reload();
       });
     } else{
     this.moduleService.deleteModule(this.id).subscribe((res) => {
       console.log(res)
+      window.location.reload();
     });}
     this.deletion = false;
   }
@@ -59,10 +61,12 @@ export class CustomMaterialCardComponent implements OnInit {
       if(this.isClass) {
         this.moduleService.editClass(this.id, result).subscribe((res) => {
           console.log(res);
+          window.location.reload();
         });
       }else{
       this.moduleService.editModule(this.id, result).subscribe((res) => {
         console.log(res);
+        window.location.reload();
       });}
       // this.animal = result;
       console.log(result)
